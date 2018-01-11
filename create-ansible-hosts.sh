@@ -14,6 +14,7 @@ rm -f ${ANS_HOST}
 echo "Gathering all Public IPs"
 
 if [ ! -f ${IP_FILE} ]
+then
   openstack floating ip list -f value -c 'Floating IP Address' > ${IP_FILE}
 fi
 
