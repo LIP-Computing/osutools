@@ -14,7 +14,7 @@ then
   LIB64_PREFIX="/usr/lib/x86_64-linux-gnu/"
 fi
 
-if [[ ${OS_TYPE} =~ *rhel* ]]
+if [[ ${OS_TYPE} == *rhel* ]];
 then
   LIB64_PREFIX="/usr/lib64/"
 fi
