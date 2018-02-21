@@ -19,5 +19,15 @@ then
   LIB64_PREFIX="/usr/lib64/"
 fi
 
-echo "LIB64_PREFIX= ${LIB64_PREFIX}"
+echo "LIB64_PREFIX=${LIB64_PREFIX}"
+
+# List of nvidia bin to pass as volume
+
+for vol in `find ${BIN_PREFIX} -name 'nvidia*'|grep -v container|grep -v docker|sort`
+do
+  OPT="${OPT} -v ${vol}:${vol}"
+done
+
+echo ${OPT}
+
 
