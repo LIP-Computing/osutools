@@ -15,6 +15,8 @@ do
   OPT="${OPT} -v ${vol}:${vol}"
 done
 
+# LIB64_PREFIX for the host system
+
 if [ "${OS_TYPE}" = "debian" ]
 then
   LIB64_PREFIX="/usr/lib/x86_64-linux-gnu/"
@@ -27,37 +29,48 @@ fi
 
 echo "LIB64_PREFIX=${LIB64_PREFIX}"
 
+# LIB64_image for the docker image
+LIB64_image="/usr/lib/x86_64-linux-gnu/"
+LIB64_image="/usr/lib64/"
+
 # List of nvidia bin to pass as volume
 
+echo "-----"
 for vol in `find ${BIN_PREFIX} -name 'nvidia*'|grep -v container|grep -v docker|sort`
 do
-  OPT="${OPT} -v ${vol}:${vol}"
+  OPT="${OPT} -v ${LIB64_PREFIX}/${vol}:${LIB64_image}/${vol}"
 done
 
+echo "-----"
 for vol in `find ${LIB64_PREFIX} -name 'lib*GL*'|grep -v mesa|grep -v GLU`
 do
   OPT="${OPT} -v ${vol}:${vol}"
 done
 
+echo "-----"
 for vol in `find ${LIB64_PREFIX} -name 'libOpenCL*'`
 do
   OPT="${OPT} -v ${vol}:${vol}"
 done
 
+echo "-----"
 for vol in `find ${LIB64_PREFIX} -name 'libcuda*'`
 do
   OPT="${OPT} -v ${vol}:${vol}"
 done
 
+echo "-----"
 for vol in `find ${LIB64_PREFIX} -name 'libvdpau*'`
 do
   OPT="${OPT} -v ${vol}:${vol}"
 done
 
+echo "-----"
 for vol in `find ${LIB64_PREFIX} -name 'libnv*'|grep -v xorg|grep -v container`
 do
   OPT="${OPT} -v ${vol}:${vol}"
 done
 
+echo "-----"
 echo ${OPT}
 
