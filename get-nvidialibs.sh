@@ -40,6 +40,7 @@ for vol in `find ${BIN_PREFIX} -name 'nvidia*'|grep -v container|grep -v docker|
 do
   OPT="${OPT} -v ${LIB64_PREFIX}/${vol}:${LIB64_image}/${vol}"
 done
+echo ${OPT}
 
 echo "-----"
 for vol in `find ${LIB64_PREFIX} -name 'lib*GL*'|grep -v mesa|grep -v GLU`
