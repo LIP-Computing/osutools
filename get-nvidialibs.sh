@@ -41,8 +41,9 @@ do
   OPT="${OPT} -v ${vol}:${vol}"
 done
 
+cd ${LIB64_PREFIX}
 echo "-----"
-for vol in `find ${LIB64_PREFIX} -name 'lib*GL*'|grep -v mesa|grep -v GLU`
+for vol in `find . -name 'lib*GL*'|grep -v mesa|grep -v GLU`
 do
   OPT="${OPT} -v ${LIB64_PREFIX}/${vol}:${LIB64_image}/${vol}"
   echo "-v ${LIB64_PREFIX}/${vol}:${LIB64_image}/${vol}"
