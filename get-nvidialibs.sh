@@ -43,34 +43,43 @@ done
 
 cd ${LIB64_PREFIX}
 echo "-----"
-for vol in `find . -name 'lib*GL*'|grep -v mesa|grep -v GLU`
+for vol1 in `find . -name 'lib*GL*'|grep -v mesa|grep -v GLU`
 do
-  OPT="${OPT} -v ${LIB64_PREFIX}/${vol}:${LIB64_image}/${vol}"
+  vol=`echo $vol1|cut -d "/" -f 2-`
+  OPT="${OPT} -v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
   echo "-v ${LIB64_PREFIX}/${vol}:${LIB64_image}/${vol}"
 done
 
 echo "-----"
-for vol in `find ${LIB64_PREFIX} -name 'libOpenCL*'`
+for vol1 in `find ${LIB64_PREFIX} -name 'libOpenCL*'`
 do
-  OPT="${OPT} -v ${vol}:${vol}"
+  vol=`echo $vol1|cut -d "/" -f 2-`
+  OPT="${OPT} -v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
+  echo "-v ${LIB64_PREFIX}/${vol}:${LIB64_image}/${vol}"
 done
 
 echo "-----"
-for vol in `find ${LIB64_PREFIX} -name 'libcuda*'`
+for vol1 in `find ${LIB64_PREFIX} -name 'libcuda*'`
 do
-  OPT="${OPT} -v ${vol}:${vol}"
+  vol=`echo $vol1|cut -d "/" -f 2-`
+  OPT="${OPT} -v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
+  echo "-v ${LIB64_PREFIX}/${vol}:${LIB64_image}/${vol}"
 done
 
 echo "-----"
-for vol in `find ${LIB64_PREFIX} -name 'libvdpau*'`
+for vol1 in `find ${LIB64_PREFIX} -name 'libvdpau*'`
 do
-  OPT="${OPT} -v ${vol}:${vol}"
+  vol=`echo $vol1|cut -d "/" -f 2-`
+  OPT="${OPT} -v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
+  echo "-v ${LIB64_PREFIX}/${vol}:${LIB64_image}/${vol}"
 done
 
 echo "-----"
-for vol in `find ${LIB64_PREFIX} -name 'libnv*'|grep -v xorg|grep -v container`
+for vol1 in `find ${LIB64_PREFIX} -name 'libnv*'|grep -v xorg|grep -v container`
 do
-  OPT="${OPT} -v ${vol}:${vol}"
+  vol=`echo $vol1|cut -d "/" -f 2-`
+  OPT="${OPT} -v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
+  echo "-v ${LIB64_PREFIX}/${vol}:${LIB64_image}/${vol}"
 done
 
 echo "-----"
