@@ -38,14 +38,14 @@ LIB64_image="/usr/lib64/"
 echo "-----"
 for vol in `find ${BIN_PREFIX} -name 'nvidia*'|grep -v container|grep -v docker|sort`
 do
-  OPT="${OPT} -v ${LIB64_PREFIX}/${vol}:${LIB64_image}/${vol}"
+  OPT="${OPT} -v ${vol}:${vol}"
 done
-echo ${OPT}
 
 echo "-----"
 for vol in `find ${LIB64_PREFIX} -name 'lib*GL*'|grep -v mesa|grep -v GLU`
 do
-  OPT="${OPT} -v ${vol}:${vol}"
+  OPT="${OPT} -v ${LIB64_PREFIX}/${vol}:${LIB64_image}/${vol}"
+  echo "-v ${LIB64_PREFIX}/${vol}:${LIB64_image}/${vol}"
 done
 
 echo "-----"
