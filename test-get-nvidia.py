@@ -22,6 +22,7 @@ import os
 import stat
 import string
 import re
+import json
 import subprocess
 import time
 import pwd
@@ -31,9 +32,12 @@ import platform
 if __name__ == "__main__":
     bin_dir = '/usr/bin'
     etc_dir = '/etc'
-    lib_dir_host = '/usr/lib/x86_64-linux-gnu' # debian/ubuntu host OS
-    lib_dir_image = '/usr/lib/x86_64-linux-gnu' # debian/ubuntu docker OS
+    lib_dir_host = '/usr/lib/x86_64-linux-gnu'   # libdir for debian/ubuntu host OS
+    lib_dir_image = '/usr/lib/x86_64-linux-gnu'  # libdir for debian/ubuntu docker OS
+    os_type = 'debian'  # default OS type of host
     list_etc = ['vulkan/icd.d/nvidia_icd.json', 'OpenCL/vendors/nvidia.icd']
+
+    # TODO: try except
     os_file = open('/etc/os-release', 'r')
     for line in os_file:
         line = line.rstrip()
@@ -45,3 +49,6 @@ if __name__ == "__main__":
         lib_dir_host = '/usr/lib64'
 
     print lib_dir_host
+
+    cont_json = json.load('container.json')
+    print cont_json
