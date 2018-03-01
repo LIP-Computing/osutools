@@ -52,4 +52,4 @@ if __name__ == "__main__":
 
     with open('container.json') as fp:
         cont_json = json.load(fp)
-    print cont_json['Env']
+    print cont_json['config']['Env']
