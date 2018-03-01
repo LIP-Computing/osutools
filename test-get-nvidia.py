@@ -50,5 +50,6 @@ if __name__ == "__main__":
 
     print lib_dir_host
 
-    cont_json = json.load('container.json')
+    with open('container.json') as fp:
+        cont_json = json.load(fp)
     print cont_json
