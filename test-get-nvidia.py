@@ -38,6 +38,10 @@ if __name__ == "__main__":
     for line in os_file:
         line = line.rstrip()
         if re.search('^ID_LIKE=', line):
-            print line
             (dummy, os_type) = line.split('=')
             print os_type
+
+    if re.search('rhel', os_type):
+        lib_dir_host = '/usr/lib64'
+
+    print lib_dir_host
