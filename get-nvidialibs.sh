@@ -55,45 +55,52 @@ for vol1 in `find . -name 'lib*GL*' -printf "%P\n" |sort |grep -v mesa|grep -v G
 do
   vol=`echo $vol1|cut -d "/" -f 2-`
   OPT="${OPT} -v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
-
   vol2=`echo $vol1|cut -d "." -f 1`
   liblist="${liblist}'${vol2}', "
 #  echo "-v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
 done
-echo $liblist
-
 
 echo "-----"
-for vol1 in `find . -name 'libOpenCL*'`
+for vol1 in `find . -name 'libOpenCL*' -printf "%P\n" |sort`
 do
   vol=`echo $vol1|cut -d "/" -f 2-`
   OPT="${OPT} -v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
+  vol2=`echo $vol1|cut -d "." -f 1`
+  liblist="${liblist}'${vol2}', "
 #  echo "-v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
 done
 
 #echo "-----"
-for vol1 in `find . -name 'libcuda*'`
+for vol1 in `find . -name 'libcuda*' -printf "%P\n" |sort`
 do
   vol=`echo $vol1|cut -d "/" -f 2-`
   OPT="${OPT} -v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
+  vol2=`echo $vol1|cut -d "." -f 1`
+  liblist="${liblist}'${vol2}', "
 #  echo "-v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
 done
 
 #echo "-----"
-for vol1 in `find . -name 'libvdpau*'`
+for vol1 in `find . -name 'libvdpau*' -printf "%P\n" |sort`
 do
   vol=`echo $vol1|cut -d "/" -f 2-`
   OPT="${OPT} -v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
+  vol2=`echo $vol1|cut -d "." -f 1`
+  liblist="${liblist}'${vol2}', "
 #  echo "-v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
 done
 
 #echo "-----"
-for vol1 in `find . -name 'libnv*'|grep -v xorg|grep -v container`
+for vol1 in `find . -name 'libnv*' -printf "%P\n" |sort|grep -v xorg|grep -v container`
 do
   vol=`echo $vol1|cut -d "/" -f 2-`
   OPT="${OPT} -v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
+  vol2=`echo $vol1|cut -d "." -f 1`
+  liblist="${liblist}'${vol2}', "
 #  echo "-v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
 done
+liblist="]"
+echo $liblist
 
 echo "-----"
 
