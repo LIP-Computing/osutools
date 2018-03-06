@@ -39,10 +39,11 @@ LIB64_image="/usr/lib64/"
 echo "-----"
 binlist="["
 cd ${BIN_PREFIX}
-for vol in `find . -name 'nvidia*'|grep -v container|grep -v docker|sort`
+for vol in `find . -name 'nvidia*' -printf "%P\n" |grep -v container|grep -v docker|sort`
 do
   OPT="${OPT} -v ${vol}:${vol}"
-  binlist="${binlist}\'${vol}\', "
+  
+  binlist="${binlist}'${vol}', "
 done
 binlist="${binlist}]"
 echo $binlist
