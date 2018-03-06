@@ -56,13 +56,14 @@ do
   vol=`echo $vol1|cut -d "/" -f 2-`
   OPT="${OPT} -v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
 
-  liblist="${liblist}'${vol1}', "
+  vol2=`echo $vol1|cut -d "." -f 1`
+  liblist="${liblist}'${vol2}', "
 #  echo "-v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
 done
 echo $liblist
 
 
-#echo "-----"
+echo "-----"
 for vol1 in `find . -name 'libOpenCL*'`
 do
   vol=`echo $vol1|cut -d "/" -f 2-`
@@ -94,7 +95,7 @@ do
 #  echo "-v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
 done
 
-#echo "-----"
+echo "-----"
 
 echo ${OPT}
 #export OPT=${OPT}
