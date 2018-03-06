@@ -35,27 +35,32 @@ fi
 LIB64_image="/usr/lib64/"
 
 # List of nvidia bin to pass as volume
-
 echo "-----"
 binlist="["
 cd ${BIN_PREFIX}
 for vol in `find . -name 'nvidia*' -printf "%P\n" |grep -v container|grep -v docker|sort`
 do
   OPT="${OPT} -v ${vol}:${vol}"
-  
   binlist="${binlist}'${vol}', "
 done
 binlist="${binlist}]"
 echo $binlist
 
+
+
 cd ${LIB64_PREFIX}
 echo "-----"
-for vol1 in `find . -name 'lib*GL*'|grep -v mesa|grep -v GLU`
+liblist="["
+for vol1 in `find . -name 'lib*GL*' -printf "%P\n" |grep -v mesa|grep -v GLU`
 do
   vol=`echo $vol1|cut -d "/" -f 2-`
   OPT="${OPT} -v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
+
+  liblist="${liblist}'${vol1}', "
 #  echo "-v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
 done
+echo $liblist
+
 
 #echo "-----"
 for vol1 in `find . -name 'libOpenCL*'`
