@@ -60,7 +60,6 @@ do
 #  echo "-v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
 done
 
-echo "-----"
 for vol1 in `find . -name 'libOpenCL*' -printf "%P\n" |sort`
 do
   vol=`echo $vol1|cut -d "/" -f 2-`
@@ -70,7 +69,6 @@ do
 #  echo "-v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
 done
 
-#echo "-----"
 for vol1 in `find . -name 'libcuda*' -printf "%P\n" |sort`
 do
   vol=`echo $vol1|cut -d "/" -f 2-`
@@ -80,7 +78,6 @@ do
 #  echo "-v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
 done
 
-#echo "-----"
 for vol1 in `find . -name 'libvdpau*' -printf "%P\n" |sort`
 do
   vol=`echo $vol1|cut -d "/" -f 2-`
@@ -90,7 +87,6 @@ do
 #  echo "-v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
 done
 
-#echo "-----"
 for vol1 in `find . -name 'libnv*' -printf "%P\n" |sort|grep -v xorg|grep -v container`
 do
   vol=`echo $vol1|cut -d "/" -f 2-`
@@ -99,7 +95,7 @@ do
   liblist="${liblist}'${vol2}', "
 #  echo "-v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
 done
-liblist="]"
+liblist="${liblist}]"
 echo $liblist
 
 echo "-----"
