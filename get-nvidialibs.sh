@@ -51,7 +51,7 @@ echo $binlist
 cd ${LIB64_PREFIX}
 echo "-----"
 liblist="["
-for vol1 in `find . -name 'lib*GL*' -printf "%P\n" |grep -v mesa|grep -v GLU`
+for vol1 in `find . -name 'lib*GL*' -printf "%P\n" |sort |grep -v mesa|grep -v GLU`
 do
   vol=`echo $vol1|cut -d "/" -f 2-`
   OPT="${OPT} -v ${LIB64_PREFIX}${vol}:${LIB64_image}${vol}"
