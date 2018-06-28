@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import csv
 import pprint
+import pandas as pd
 
 projs = list()
 tbl = dict()
@@ -24,17 +25,18 @@ with open('year-month-nimbus.csv') as csvfile:
                 if l[0] not in projs:
                     projs.append(l[0])
 
-#print
+print
 #print projs
 #print        
 #pprint.pprint(tbl)
+df = pd.DataFrame(tbl)
 
-with open('os-table.csv', 'w') as csvf:
-    r1 = ["Projects"]
-    for r in tbl:
-        r1.append(r)
+df.to_csv('os-table.csv')
 
-row1 = ','.join(r1)
-
-print row1
+#with open('os-table.csv', 'w') as csvf:
+#    r1 = ["Projects"]
+#    for r in tbl:
+#        r1.append(r)
+#    row1 = ','.join(r1)
+#    csvf.write(row1)
 
