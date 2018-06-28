@@ -24,7 +24,17 @@ with open('year-month-nimbus.csv') as csvfile:
                 if l[0] not in projs:
                     projs.append(l[0])
 
-print
-print projs
-print        
-pprint.pprint(tbl)
+#print
+#print projs
+#print        
+#pprint.pprint(tbl)
+
+with open('os-table.csv', 'w') as csvf:
+    r1 = ["Projects"]
+    for r in tbl:
+        r1.append(r)
+
+row1 = ','.join(r1)
+
+print row1
+
