@@ -16,6 +16,8 @@ with open('year-month-nimbus.csv') as csvfile:
         with open(data_csv) as dcsv:
             rcsv = csv.reader(dcsv, delimiter=',')
             for l in rcsv:
+                if l[0] == 'Project':
+                    continue
                 print l[0], year_month, l[1]
                 tbl[year_month][l[0]] = l[1]
 
