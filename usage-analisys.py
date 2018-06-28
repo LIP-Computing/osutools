@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import csv
 
+projs = list()
 with open('year-month-nimbus.csv') as csvfile:
     readCSV = csv.reader(csvfile, delimiter=',')
     for row in readCSV:
@@ -13,5 +14,10 @@ with open('year-month-nimbus.csv') as csvfile:
             rcsv = csv.reader(dcsv, delimiter=',')
             for l in rcsv:
                 print l[0], year_month, l[1]
+                if l[0] not in projs:
+                    projs.append(l[0])
+
+print
+print projs
         
 
