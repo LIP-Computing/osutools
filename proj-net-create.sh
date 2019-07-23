@@ -27,5 +27,5 @@ echo "---> Performing router-interface-add ${PROJ}_router ${PROJ}_subnet"
 openstack router add subnet ${PROJ}_router ${PROJ}_subnet
 
 echo "---> Performing router-gateway-set ${PROJ}_router public_net"
-openstack router set --external-gateway public_net ${PROJ_router
+openstack router set --external-gateway public_net ${PROJ_router}
 
