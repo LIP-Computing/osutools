@@ -15,3 +15,4 @@ EMAIL=${USER}
 
 openstack user create --domain default --project ${PROJ} --password "${UPASS}" \
     --email "${EMAIL}" --description "${DESC}" --enable ${USER}
+
